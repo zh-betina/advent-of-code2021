@@ -78,8 +78,10 @@ const input = [173, 175, 171, 177, 179, 177, 174, 177, 178, 185, 189, 195, 194, 
     6991, 6980, 6979, 6963, 6964, 6968, 6972, 7000, 6992, 7003, 7006, 7019, 7022, 7028, 7040, 7035, 7034, 7055, 7063, 7065, 7066, 7071, 7079, 7092, 7102, 
     7118, 7115, 7121];
 
+
+/** Part I */
 function checkIncreases(input : number[]) {
-    let counter = 0;
+    let counter : number = 0;
 
     input.forEach((nb: number, idx: number) => {
         if ((input[idx + 1] > nb) && (idx < input.length))
@@ -90,3 +92,21 @@ function checkIncreases(input : number[]) {
 
 checkIncreases(input);
 
+/** Part II */
+function checkIncreasesByWindow(input : number[]) {
+    let counter : number = 0;
+
+    input.forEach((nb: number, idx: number) => {
+
+        if (idx <= (input.length - 1)) {
+            const window1 = nb + input[idx+1] + input[idx+2];
+            const window2 = input[idx+1] + input[idx+2] + input[idx+3];
+
+            if (window2 > window1) counter += 1;
+        };
+    });
+
+    console.log(counter);
+};
+
+checkIncreasesByWindow(input);
